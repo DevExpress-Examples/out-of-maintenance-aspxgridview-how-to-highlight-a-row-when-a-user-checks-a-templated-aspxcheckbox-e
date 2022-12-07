@@ -5,8 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Xpo;
-using DevExpress.Web.ASPxEditors;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 
 public partial class _Default : System.Web.UI.Page {
     Session session = XpoHelper.GetNewSession();
@@ -21,7 +20,7 @@ public partial class _Default : System.Web.UI.Page {
 
 		chk.ClientSideEvents.CheckedChanged = String.Format("function (s, e) {{ OnCheckedChange(s, e, {0}, {1}); }}", container.KeyValue, container.VisibleIndex);
     }
-    protected void cb_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e) {
+    protected void cb_Callback(object source, DevExpress.Web.CallbackEventArgs e) {
         String[] p = e.Parameter.Split('|');
 		
         MyObject obj = session.GetObjectByKey<MyObject>(Convert.ToInt32(p[0])); // get the record from the Session
